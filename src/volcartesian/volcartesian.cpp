@@ -1382,7 +1382,7 @@ std::array<int, 3> VolCartesian::getVertexCartesianId(long idx) const
 }
 
 /*!
-	Gets the cartesian indices of the specified local vertex.
+	Gets the cartesian indices of the specified local vertex of a cell.
 
 	No check on bounds is performed.
 
@@ -1396,7 +1396,7 @@ std::array<int, 3> VolCartesian::getVertexCartesianId(long cellIdx, int vertex) 
 }
 
 /*!
-	Gets the cartesian indices of the specified local vertex.
+	Gets the cartesian indices of the specified local vertex of a cell.
 
 	No check on bounds is performed.
 
