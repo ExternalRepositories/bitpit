@@ -644,6 +644,31 @@ double VolCartesian::evalCellVolume(long id) const
 {
 	BITPIT_UNUSED(id);
 
+	return evalCellVolume();
+}
+
+/*!
+	Evaluates the volume of the specified cell.
+
+	\param ijk is the set of cartesian indices of the cell
+	\result The volume of the specified cell.
+*/
+double VolCartesian::evalCellVolume(const std::array<int, 3> &ijk) const
+{
+	BITPIT_UNUSED(ijk);
+
+	return evalCellVolume();
+}
+
+/*!
+	Evaluates the volume of a cell.
+
+	The patch is uniformly spaced, so all the cells have the same volume.
+
+	\result The volume of a cell.
+*/
+double VolCartesian::evalCellVolume() const
+{
 	return m_cellVolume;
 }
 
@@ -657,6 +682,31 @@ double VolCartesian::evalCellSize(long id) const
 {
 	BITPIT_UNUSED(id);
 
+	return evalCellSize();
+}
+
+/*!
+	Evaluates the characteristic size of the specified cell.
+
+	\param ijk is the set of cartesian indices of the cell
+	\result The characteristic size of the specified cell.
+*/
+double VolCartesian::evalCellSize(const std::array<int, 3> &ijk) const
+{
+	BITPIT_UNUSED(ijk);
+
+	return evalCellSize();
+}
+
+/*!
+	Evaluates the characteristic size of a cell.
+
+	The patch is uniformly spaced, so all the cells have the same size.
+
+	\result The characteristic size of a cell.
+*/
+double VolCartesian::evalCellSize() const
+{
 	return pow(m_cellVolume, 1. / getDimension());
 }
 
@@ -2133,6 +2183,17 @@ std::array<double, 3> VolCartesian::evalCellCentroid(long id) const
 {
 	std::array<int, 3> ijk = getCellCartesianId(id);
 
+	return evalCellCentroid(ijk);
+}
+
+/*!
+	Evaluates the centroid of the specified cell.
+
+	\param ijk is the set of cartesian indices of the cell
+	\result The centroid of the specified cell.
+*/
+std::array<double, 3> VolCartesian::evalCellCentroid(const std::array<int, 3> &ijk) const
+{
 	std::array<double, 3> centroid;
 	for (int d = 0; d < 3; ++d) {
 		if (ijk[d] >= 0) {
